@@ -2,6 +2,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{
+  left=2cm,     % Margem esquerda de 2 cm
+  right=2cm,    % Margem direita de 2 cm
+  top=2cm,      % Margem superior de 2 cm
+  bottom=2cm    % Margem inferior de 2 cm
+}
 \title{\textbf{\Huge{Placas Gráficas em Portáteis}}}
 \author{Afonso Sampaio e Maria Beatriz Rocha}
 \date\today
@@ -49,26 +56,50 @@ A arquitetura de uma GPU refere-se ao design e à organização interna das unid
 
 \section{Primórdios de GPUs}
 As GPUs passaram por uma evolução desde a Arquitetura de Barramento Fixo, que era baseada em funções fixas sem programação; passando pela Arquitetura de Transformação e Iluminação(T\&L) que consistia em separar esta duas operações do processamento dos pixeis, fornecendo assim um melhor desempenho; até chegarmos à Arquitetura de Shader Unificado, que permitiu a execução de tarefas programáveis, incluindo o uso de sombreadores para efeitos visuais mais avançados.
-\pagebreak
 \section{GPUs Atuais}
 \subsection{Arquiteturas da NVIDIA}
 A NVIDIA lançou várias arquiteturas de GPUs, mas iremos apenas citar as mais conhecidas e as que iremos utilizar nos tested de desempenho:
 \begin{itemize}
  \item[•] \textbf{NVIDIA Maxwell (2014)}: A grande mudança começou aqui. As GPUS tornaram-se mais eficientes; houve melhorias de shaders\footnote{Programa de computador usado para fazer shading: a produção de níveis de cor apropriadas para uma imagem e produzir efeitos especiais ou pós-processamento de vídeo.}; foi a primeira a ter suporte total para DirectX\footnote{Conjunto de APIs que permite aos softwares dar instruções diretas para os componentes de hardware de áudio e de vídeo, melhorando assim o desempenho das aplicações na execução de recursos multimédia} 12; premitia o controlo total sobre a frequência e voltagem da GPU; o aparecimento do HEVC(H.265)\footnote{Formato de vídeo com alta eficiência de compressão para vídeos de alta resolução}, o que resultou em melhor qualidade de vídeo e menor uso da CPU; a primeira a ter suporte para G-SYNC\footnote{Tecnologia da Nvidia que elimina a "quebra" de quadros em jogos, presentes nos monitores gamer}, eliminando assim o tearing\footnote{Fenómeno que cria uma imagem destorcida}.
  \item[•] \textbf{NVIDIA Pascal (2016)}: É a arquitetura mais comum de todas, visto que possui uma boa eficiência energética juntamente com um desempenho sólido. Apesar de não ser das  arquiteturas mais recentes, continua a ter suporte para quase todas as tecnologias modernas lançadas hoje em dia, para além disso, podem ser compradas a preços acessíveis.
- \item[•] \textbf{NVIDIA Turing (2018)}: Usada nas graficas da série RTX20 onde se deu uma grande evolução: foram incluídos núcleos de Ray Tracing\footnote{Técnica avançada de renderização gráfica usada para simular o comportamento realista da luz em ambientes virtuais, como jogos, animações, filmes e aplicações de modelagem 3D.}, bem como núcleos de inteligência artificial; introdução da tecnologia DLSS\footnote{Tecnologia desenvolvida pela NVIDIA para melhorar o desempenho gráfico em jogos e aplicativos, ao mesmo tempo em que mantém ou até mesmo melhora a qualidade da imagem, utilizando a inteligência artificial para atingir estes mesmos objetivos.}(Deep Learning Super Sampling); uma maior perfomance e eficiência global bem como um aumento muito significativo do desempenho em RV; a primeira a ter suporte para DirectX 12 Ultimate; e a primeira a ter suporte para novas tecnologias de resolução, conseguindo suportar resoluções até 4K 144HZ.
+\pagebreak
+ \item[•] \textbf{NVIDIA Turing (2018)}: Usada nas graficas da série RTX20 onde se deu uma grande evolução: foram incluídos núcleos de Ray Tracing\footnote{Técnica avançada de renderização gráfica usada para simular o comportamento realista da luz em ambientes virtuais, como jogos, animações, filmes e aplicações de modelagem 3D.}, bem como núcleos de inteligência artificial; introdução da tecnologia DLSS\footnote{Tecnologia desenvolvida pela NVIDIA para melhorar o desempenho gráfico em jogos e aplicativos, ao mesmo tempo em que mantém ou até mesmo melhora a qualidade da imagem, utilizando a inteligência artificial para atingir estes mesmos objetivos.} (Deep Learning Super Sampling); uma maior perfomance e eficiência global bem como um aumento muito significativo do desempenho em RV; a primeira a ter suporte para DirectX 12 Ultimate; e a primeira a ter suporte para novas tecnologias de resolução, conseguindo suportar resoluções até 4K 144HZ.
 \pagebreak
  \item[•] \textbf{NVIDIA Ampere (2020)}: Usada nas gráficas da série RTX30 e nas séries para profissionais Quadro, que tinha as segintes vantagens: um desempenho muito superior em relação à geração anterior, tendo também uma maior efiçiência energética; uma grande melhoria nos núcleos de Ray Tracing tornando este método bastante fluido e responsivo; melhoria nos núcleos de inteligência artificial; a capacidade de executar computação de alto desempenho sendo capaz de fazer a análise de dados e computação de alto desempenho; suporte para resoluções de 8K 60HZ
- \item[•] \textbf{NVIDIA Ada Lovelace (2022)}: Usada nas gráficas da série RTX40 que trouxe: grandes aumentos no desempenho e na eficiência das GPUs; melhoria dos núcleos de Ray Tracing bem como nos núcleos de inteligência artificial; suporte para tecnologia DLSS 3; suporte para o codec AV1\footnote{Codec de compressão de vídeo que oferece licenciamento sem royalties e que pode atingir um desempenho até 30\%melhor que o H.265}
+ \item[•] \textbf{NVIDIA Ada Lovelace (2022)}: Usada nas gráficas da série RTX40 que trouxe: grandes aumentos no desempenho e na eficiência das GPUs; melhoria dos núcleos de Ray Tracing bem como nos núcleos de inteligência artificial; suporte para tecnologia DLSS 3; suporte para o codec AV1\footnote{Codec de compressão de vídeo que oferece licenciamento sem royalties e que pode atingir um desempenho até 30\%melhor que o H.265}.
 \end{itemize}
 \subsection{Arquiteturas da AMD}
 Do outro lado da concorrência temos a AMD que ao longo dos anos também lançou arquiteturas bastante diferentes e com um desempenho escalar, apesar de andar sempre atrás dos calcanhares da NVIDIA não criando, assim, muita tecnologia nova e que as destinguisse das da NVIDIA. Aqui seguem as mais conhecidas e que têm uma rivalidade direta com as mencionadas da NVIDIA:
 \begin{itemize}
  \item[•] \textbf{AMD Vega (2017)}: Uma arquitetura com características muito semelhantes às da NVIDIA Pascal tendo a vantagem de esta se encontrar a um preço mais acessível e oferecer um desempenho similar; usa a tecnologia HBM2 que tem uma largura de banda de memória muito superior ao tipo GDDR5 e GDDR5X encontrado em placas NVIDIA.
   \item[•] \textbf{AMD RDNA(2019)}: A AMD quase conseguiu igualar a NVIDIA nesta geração em GPUs a preços mais acessíveis; continuavam a ter uma largura de banda de memória maior mas em contrapartida estas ainda não possuiam núcleos de Ray Tracing nem núcleos de inteligência artificial como a NVIDIA além do que tinham uma melhor eficiência energética.
-\pagebreak
   \item[•] \textbf{AMD RDNA 2 (2020)}: A segunda geração da RDNA trouxe algumas melhorias bastante consideráveis em relação à geração anterior: o aparecimento da tecnologia Infinity Cache\footnote{Tecnologia que permite que a GPU acesse dados frequentemente utilizados mais rapidamente tornando-a assim mais eficiente} que foi e continua a ser um dos grandes pontos fortes da AMD; o aparecimento de núcleos de Ray Tracing mas que infelizmente não conseguem sequer superar os da primeira geração da NVIDIA para além de que continuam a não possuir núcleos de inteligência artificial; a banda de memória continua a ser maior no lado da AMD; e continuam a ter um preço bem mais acessível do que as da NVIDIA e também são mais eficientes, no geral.
  \item[•] \textbf{AMD RDNA 3 (2022)}: A terceira geração da tecnologia RDNA veio melhorar as coisas introduzidas na geração anterior: a segunda geração da tecnologia Infinity Cache surgiu e veio aumentar ainda mais a banda da memória; melhoria dos núcleos de Ray Tracing que continua a não ser o ponto forte da AMD conseguindo apenas igualar a geração arquitetura Ampere; implementação de núcleos de AI; continua a estar a um preço muito mais acessível do que a concorrência mas esta arquitetura é também menos eficiente em relação à arquitetura Ada Lovelace; suporte a displayports 2.1 capazes de suportar resoluções 16K 60Hz.
 \end{itemize}
+
+\chapter{Tipos de GPUs}
+\section{GPUs Integradas vs GPUs Dedicadas}
+As placas gráficas integradas e dedicadas são dois tipos de GPUs que são encontradas em portáteis.
+\\\\
+\begin{tabular}{|l|l|l|}
+%
+\hline
+	     \textbf{Paramêtros} &\textbf{GPU Integrada}&\textbf{GPU Dedicada} \\ \hline
+&&\\
+& & É uma unidade gráfica separada que tem\\
+&Está incorporada na CPU do portátil& a sua própria memória dedicada (VRAM)\\
+\textbf{Defenição} &e compartilha a memória do sistema& e é projetada especificamente para\\
+& (RAM) com o processador principal& tarefas gráficas mais intensivas, como\\
+&& jogos, edição de vídeo e modelagem 3D\\ 
+&&\\ \hline
+&&\\
+&Têm um desempenho gráfico muito em&Têm um desempenho gráfico muito\\
+&comparação com as dedicadas, sendo&em comparação com as integradas,\\
+\textbf{Desempenho}&mais adequadas para tarefas cotidianas,& permitindo ao utilizador executar jogos\\
+&como navegação na web, processamento& e aplicações mais exigentes com maior\\
+&de texto e reprodução de vídeos& fluidez e qualidade gráfica\\ 
+&&\\ \hline 
+%
+\end{tabular}
 
 \end{document}
